@@ -2,7 +2,6 @@ import React from 'react'
 
 const ItemList = (props) => {
     const { item, index } = props;
-    console.log(index)
     return (
         <div className='item'>
             <div className='item_string'>
