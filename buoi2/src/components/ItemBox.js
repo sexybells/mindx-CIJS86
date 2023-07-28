@@ -26,11 +26,7 @@ const ItemBox = (props) => {
                     <CustomButton hideAndShowModal={hideAndShowModal} modalOpen={modalOpen} />
                 </div>
             </div>
-            <Modal show={modalOpen} onClose={() => hideAndShowModal(false)}>
-                <h2>Hải Dương Số 1</h2>
-                <p>Modal của Hải Dương</p>
-                <button onClick={() => hideAndShowModal(false)}>Đóng</button>
-            </Modal>
+            <Modal show={modalOpen} setModalOpen={setModalOpen} onClose={() => setModalOpen(false)} />
         </>
     )
 }
