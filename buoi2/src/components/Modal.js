@@ -12,6 +12,7 @@ const Modal = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Bạn vừa mua ' + formData.ticket + ' vé. Đã được gửi tới '+ formData.email)
+    setFormData({ticket: 0, email: ''})
     setModalOpen(false)
   }
 
