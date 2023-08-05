@@ -41,7 +41,7 @@ const FilterYears = (props) => {
               showInfo={false}
               percent={average[i + 1] ? average[i + 1] : 0}
             />
-            {v}
+            <p style={{ color: 'white' }}>{v}</p>
           </div>
         ))}
       </div>
