@@ -6,7 +6,7 @@ import FilterYears from "./components/Filter";
 import moment from 'moment';
 
 function App() {
-  const [formData, setFormData] = useState({ name: "", amount: 0, date: "" });
+  const [formData, setFormData] = useState({ name: "", amount: '', date: "" });
   const [expense, setExpense] = useState([]);
   const [data, setData] = useState([])
   const [yearOptions, setYearOptions] = useState([]);
@@ -43,7 +43,7 @@ function App() {
     setData(filterData);
     setSelectedOption(years[0])
     setYearOptions(years);
-  }, [expense])
+  }, [expense, data])
 
   return (
     <div className="App">
