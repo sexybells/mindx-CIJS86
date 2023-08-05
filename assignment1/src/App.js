@@ -55,7 +55,7 @@ function App() {
               <p>Filter by year</p>
             </div>
             <div className="filter-options">
-              <select class="form-select" value={selectedOption} onChange={handleOptionChange}> aria-label="Default select example">
+              <select class="form-select" value={selectedOption} onChange={handleOptionChange} aria-label="Default select example">
                   {yearOptions.map((v, i) => (
                     <option value={v} selected={v === selectedOption}>{v}</option>
                   ))}
