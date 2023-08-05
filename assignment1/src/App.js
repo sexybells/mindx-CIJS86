@@ -12,7 +12,9 @@ function App() {
   const [yearOptions, setYearOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState();
 
+  //Ở đây là hàm sau khi ấn nút ADD. Mình sử dụng 2 state để chứa data, trong đó expense là data tổng. Sau khi thêm mới thì sẽ lưu vào state này đầu tiên. Còn lại là state data, chứ dữ liệu theo năm được lựa chọn ở phần filter
   const handleForm = () => {
+    //Đầu tiên mình sẽ sử dụng momentjs để có thể lấy được ngày/tháng/năm
     const dateTime = moment(formData.date)
     const params = {
       name: formData.name, 
@@ -21,13 +23,17 @@ function App() {
       month: dateTime.months() + 1,
       day: dateTime.date()
     }
+    //Sau đó mình sẽ thêm value vào cho expense
     const add = expense.concat(params);
+    //Nếu như trong dữ liệu mới, năm = năm được chọn, cũng sẽ lưu vào state data
     if (dateTime.year() === selectedOption) {
       const pushData = data.concat(params)
       setData(pushData);
     }
     setExpense(add)
   }
+
+  //Hàm sử lý select option
   const handleOptionChange = (e) => {
     const value = parseInt(e.target.value);
     setSelectedOption(value);
@@ -35,6 +41,10 @@ function App() {
     setData(filter);
     
   };
+  //Ở đây mình sử dụng useEffect, sẽ chạy vào mỗi khi có thay đổi ở 2 state expense và data.
+  //Mình sẽ lọc ra toàn bộ năm có trong expense sau đó thêm nó vào 1 cái state khác là selectedOption để có thể hiển thị ở select option
+  //YearOptions là state lưu năm được lựa chọn ở select option, mặc định sẽ là năm lớn nhất.
+  //Data khi bắt đầu vào web, data sẽ chứa dữ liệu theo năm lớn nhất, dựa theo giá trị mặc định của yearOptions
   useEffect(() => {
     let years = expense.map(item => item.year);
     years = years.sort((a, b) => b-a)

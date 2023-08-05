@@ -3,6 +3,7 @@ import React from 'react';
 const ExpenseList = (props) => {
 
     const {item} = props;
+    //Quy đổi tháng từ số ra chữ. Trông hơi củ chuối tí
     const monthName = {
         1: "January",
         2: "February",
