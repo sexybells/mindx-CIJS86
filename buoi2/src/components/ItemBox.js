@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import CustomButton from './CustomButton';
-import Modal from './Modal';
+import { TicketContext } from './Context';
 const ItemBox = (props) => {
     const { item } = props;
-    const [modalOpen, setModalOpen] = useState(false);
-    const hideAndShowModal = (status) => {
-        setModalOpen(status)
-    }
+    const {isModal, handleModal} = useContext(TicketContext)
+
     return (
         <>
             <div className='box_item'>
@@ -23,10 +21,9 @@ const ItemBox = (props) => {
                     <div className='description'>
                         <p>{item.description}</p>
                     </div>
-                    <CustomButton hideAndShowModal={hideAndShowModal} modalOpen={modalOpen} />
+                    <CustomButton hideAndShowModal={handleModal} modalOpen={isModal} />
                 </div>
             </div>
-            <Modal show={modalOpen} setModalOpen={setModalOpen} onClose={() => setModalOpen(false)} />
         </>
     )
 }
