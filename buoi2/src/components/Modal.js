@@ -29,6 +29,9 @@ const Modal = () => {
       setTicketForm({ ticket: "", email: "" });
       handleModal(false);
       setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000)
     } else {
       handleModal(false);
       alert("Không đủ vé");

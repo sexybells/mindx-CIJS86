@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 import { TicketContext } from "./Context";
 import Modal from "./Modal";
+import Loading from "./Loading";
 
 const TicketProvider = ({ children }) => {
   const [isModal, setIsModal] = useState(false);
@@ -25,6 +26,7 @@ const TicketProvider = ({ children }) => {
   return (
     <TicketContext.Provider value={contextValue}>
       {children}
+      <Loading />
       <Modal />
     </TicketContext.Provider>
   );

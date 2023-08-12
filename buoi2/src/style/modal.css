@@ -16,6 +16,13 @@
     border-radius: 8px;
     position: relative;
   }
+
+  .modal-loading {
+    background-color: 'transparent';
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+  }
   
   .close {
     position: absolute;
