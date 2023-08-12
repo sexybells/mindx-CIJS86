@@ -1,41 +1,54 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useContext, useState } from 'react';
 import '../style/modal.css';
-const Modal = (props) => {
-  const { show, children, setModalOpen } = props;
-  const [formData, setFormData] = useState({ticket: 0, email: ''})
+import { TicketContext } from './Context';
+const Modal = () => {
 
+  const {isModal, handleModal, ticketForm, setTicketForm, setCountTicket, setLoading, countTicket} = useContext(TicketContext)
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    setTicketForm({ ...ticketForm, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Bạn vừa mua ' + formData.ticket + ' vé. Đã được gửi tới '+ formData.email)
-    setFormData({ticket: 0, email: ''})
-    setModalOpen(false)
+    if (ticketForm.ticket <= countTicket) {
+      setCountTicket((prev) => prev - parseInt(ticketForm.ticket, 10))
+      console.log('Bạn vừa mua ' + ticketForm.ticket + ' vé. Đã được gửi tới '+ ticketForm.email)
+      setTicketForm({ticket: '', email: ''})
+      handleModal(false);
+      setLoading(true);
+    } else {
+      handleModal(false);
+      alert('Không đủ vé')
+    }
+
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 2000)
   }
 
-  if (!show) {
+  if (!isModal) {
     return null;
   }
 
   return (
     <div className="modal">
       <div className="modal-content">
-        <span className="close" onClick={() => setModalOpen(false)}>
+        <span className="close" onClick={() => handleModal(false)}>
           &times;
         </span>
         <form onSubmit={handleSubmit}>
-          <label>Ticket $3/1:
-            <input type="number" name='ticket' value={formData.ticket} onChange={handleChange} />
-          </label>
-          <label>Send to:
-            <input type="text" name='email' placeholder='Enter your email' onChange={handleChange} value={formData.email} />
-          </label>
-          <button type='submit'>Submit</button>
-        </form>
-        <button onClick={() => setModalOpen(false)}>Close</button>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Ticket</label>
+    <input type="number" class="form-control" onChange={handleChange} value={ticketForm.ticket} id="exampleInputEmail1" name='ticket' aria-describedby="emailHelp" placeholder="Enter Ticket" />
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Email</label>
+    <input type="email" onChange={handleChange} value={ticketForm.email} name='email' class="form-control" id="exampleInputPassword1" placeholder="Enter Email" />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+        <button className='btn btn-danger' onClick={() => handleModal(false)}>Close</button>
       </div>
     </div>
   );
