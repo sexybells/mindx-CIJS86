@@ -1,0 +1,134 @@
+.App {
+  background-color: #282c34;
+  min-height: 100vh;
+}
+.form-create {
+  background-color: #897BDA;
+  padding: 20px;
+
+}
+
+.content {
+  background-color: #1A1A1A;
+}
+
+.date {
+  width: 500px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.filter-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.box {
+  background-color: #575757;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.box-right {
+  display: flex;
+}
+
+.box-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+
+}
+
+.box-date {
+  border: 2px solid white;
+  background-color: #1A1A1A;
+  color: white;
+  padding: 20px;
+  width: 8vw;
+  height: 8vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 20px;
+  
+}
+
+.box-date p {
+  font-size: 20px;
+}
+
+.box-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-amount {
+  text-align: center;
+  border: 1px solid white;
+  padding: 5px;
+  font-size: 30px;
+  background-color: #862796;
+  color: white;
+  border-radius: 20px;
+}
+
+.bars {
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttonShow {
+  background-color: #862796;
+  color: white;
+  border-radius: 15px;
+  padding: 15px 10px 15px 10px;
+  font-size: 20px;
+}
+
+.formButton {
+  display: flex;
+  justify-content: end;
+}
+
+.formButton button {
+  margin: 10px;
+}
+
+.add {
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  background-color: #862796;
+}
+
+.cancel {
+  padding: 15px;
+  border-radius: 10px;
+  color: black;
+}
+label {
+  color: white;
+}
+
+.firstStep {
+  text-align: center;
+}
+
+
+
+
